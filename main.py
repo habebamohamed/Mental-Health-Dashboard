@@ -37,7 +37,7 @@ survey_2018 = pd.read_csv("data set/OSMI Mental Health in Tech Survey 2018.csv",
 survey_2018['year'] = '2018'
 survey_2019 = pd.read_csv("data set/OSMI Mental Health in Tech Survey 2019.csv", na_values = np.nan)
 survey_2019['year'] = '2019'
-survey_2020 = pd.read_csv("data setOSMI Mental Health in Tech Survey 2020 .csv", na_values = np.nan)
+survey_2020 = pd.read_csv("data set/OSMI Mental Health in Tech Survey 2020 .csv", na_values = np.nan)
 survey_2020['year'] = '2020'
 survey_data_ls = [survey_2017, survey_2018, survey_2019, survey_2020]
 print(f"survey_2017.columns =  {len(survey_2017.columns)}")
@@ -547,7 +547,7 @@ def draw_world_cloud():
                             colormap="viridis",
                             collocations=True,
                             # contour_width=5, 
-                            mask=np.array(Image.open("assets/b2.jpg"))).generate(words)
+                            mask=np.array(Image.open(app.get_asset_url("b2.jpg")))).generate(words)
 
     fig_wordcloud = px.imshow(my_wordcloud)
     fig_wordcloud.update_layout(margin=dict(l=0, r=0, t=0, b=0), height=400)
@@ -760,7 +760,7 @@ draw_mh_resources_provided_plt(country)
 # In[32]:
 
 
-sample_size_by_country  = prep_data[prep_data['tech_role_flag'] == 1 ][['country_work_in']]                          .groupby(by = ['country_work_in'])                          .size().reset_index().rename(columns = {0 : 'no.samples'})
+sample_size_by_country  = prep_data[prep_data['tech_role_flag'] == 1 ][['country_work_in']].groupby(by = ['country_work_in']).size().reset_index().rename(columns = {0 : 'no.samples'})
 sample_size_by_country
 
 
@@ -847,7 +847,7 @@ app.layout = dbc.Container([
     dbc.Row([
             dbc.Container([
                 dbc.Row([
-                    dbc.Row([html.Img(src="assets/HEADER.JPG")],style = {'width':'100%','background':'white'},className='',),
+                    dbc.Row([html.Img(src=app.get_asset_url("HEADER.JPG"))],style = {'width':'100%','background':'white'},className='',),
                ]),
             ]),
         ################################################## General Information #################################################            
@@ -881,10 +881,10 @@ app.layout = dbc.Container([
                     ################################################## Information Cards #################################################            
                    dbc.Col([
                         dbc.Card([
-                            dbc.CardImg(src="/assets/mh.png",className="align-self-center mt-4 mb-2",style={'height':'22%', 'width':'50%'}),
+                            dbc.CardImg(src=app.get_asset_url("mh.png"),className="align-self-center mt-4 mb-2",style={'height':'22%', 'width':'50%'}),
                             html.H3("970 Million",className="card-text",style = {'color':'#622569'}),
                             html.P("Diagnosied With Mental Disorder ",className="card-text mb-3",style = {'color':'#525252'},),
-                            dbc.CardImg(src="assets/pulse.png",className="align-self-center mt-3",style={'height':'20%', 'width':'50%'}),
+                            dbc.CardImg(src=app.get_asset_url("pulse.png"),className="align-self-center mt-3",style={'height':'20%', 'width':'50%'}),
                             html.H3("90 Percent",className="card-text",style = {'color':'#C84678'}),
                             html.P("Suicide Deaths Result from Mental Disorders",className="card-text",style = {'color':'#525252'},)], inverse=True,style={"height":"32rem","border-color":"#696969","border-width": "medium"},className=' mx-1 text-center my-1 p-2 shadow'),
                     ],className="mb-1 ",xs=12, sm=12, md=12, lg=2, xl=2),
