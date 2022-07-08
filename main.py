@@ -5,27 +5,23 @@
 # In[1]:
 
 
-import pandas as pd
-import numpy as np
+
 import warnings
 warnings.filterwarnings('ignore')
 
 ##################################
 # for visualization
-from dash import Dash, html, dcc
-import plotly.express as px
-import matplotlib.pyplot as plt 
 
-import pandas as pd
-import jupyter_dash
-from dash.dependencies import Input, Output, State
-import numpy as np 
-import dash
-import dash_bootstrap_components as dbc
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
-import plotly.io as pio
-pio.renderers.default = "notebook_connected"
+import seaborn as sns
+import matplotlib as plt
+import plotly.express as px
+import pandas as pd
+from dash import Dash, html, dcc, Input,Output,State
+import dash_bootstrap_components as dbc
+import numpy as np
+import dash
 
 
 # # Prepare Data
@@ -35,13 +31,13 @@ pio.renderers.default = "notebook_connected"
 # In[2]:
 
 
-survey_2017 = pd.read_csv("data set\OSMI Mental Health in Tech Survey 2017.csv", na_values = np.nan)
+survey_2017 = pd.read_csv("data set/OSMI Mental Health in Tech Survey 2017.csv", na_values = np.nan)
 survey_2017['year'] = '2017'
-survey_2018 = pd.read_csv("data set\OSMI Mental Health in Tech Survey 2018.csv", na_values = np.nan)
+survey_2018 = pd.read_csv("data set/OSMI Mental Health in Tech Survey 2018.csv", na_values = np.nan)
 survey_2018['year'] = '2018'
-survey_2019 = pd.read_csv("data set\OSMI Mental Health in Tech Survey 2019.csv", na_values = np.nan)
+survey_2019 = pd.read_csv("data set/OSMI Mental Health in Tech Survey 2019.csv", na_values = np.nan)
 survey_2019['year'] = '2019'
-survey_2020 = pd.read_csv("data set\OSMI Mental Health in Tech Survey 2020 .csv", na_values = np.nan)
+survey_2020 = pd.read_csv("data setOSMI Mental Health in Tech Survey 2020 .csv", na_values = np.nan)
 survey_2020['year'] = '2020'
 survey_data_ls = [survey_2017, survey_2018, survey_2019, survey_2020]
 print(f"survey_2017.columns =  {len(survey_2017.columns)}")
@@ -830,14 +826,6 @@ draw_curr_rate_by_country()
 # In[36]:
 
 
-import seaborn as sns
-import matplotlib as plt
-import plotly.express as px
-import pandas as pd
-from dash import Dash, html, dcc, Input,Output,State
-import dash_bootstrap_components as dbc
-import numpy as np
-import dash
 
 
 # In[37]:
